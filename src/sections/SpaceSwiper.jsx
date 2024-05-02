@@ -9,32 +9,46 @@ import { Img, Text } from "components";
 function SpaceSwiper() {
   return (
     <div className="mb-12">
-      <div className="w-full  mx-auto md:p-5 max-w-[1390px] ">
-        <div className="flex items-center justify-between gap-5">
-          <Text as="p" className="uppercase !font-normal">
-            1 / 2
-          </Text>
-          <div className="flex justify-between w-[24%] gap-5 border-blue_gray-900 border-t border-solid">
-            <Img
-              src="images/img_button_previous.svg"
-              alt="buttonprevious"
-              className="h-[60px]"
-            />
-            <Img
-              src="images/img_arrow_left_blue_gray_900.svg"
-              alt="arrowleft_three"
-              className="h-[60px] mr-[234px]"
-            />
+      <div className="w-full mx-auto px-2 max-w-[1390px] ">
+        <div className="flex items-center justify-between gap-4">
+          <div className="sm:hidden w-1/4">
+            <Text as="p" className="uppercase !font-normal text-base">
+              1 / 2
+            </Text>
+          </div>
+
+          <div className="sm:hidden w-1/4"></div>
+
+          <div className="border-t-blue_gray-900 sm:w-full md:w-2/4 flex items-center justify-between w-2/6 border-t-2">
+            <div className="gap-x-3 flex items-center">
+              <Img
+                src="images/img_button_previous.svg"
+                alt="buttonprevious"
+                className="w-8"
+              />
+              <Img
+                src="images/img_arrow_left_blue_gray_900.svg"
+                alt="arrowleft_three"
+                className="w-8"
+              />
+            </div>
+
+            <div className="sm:block hidden">
+              <Text as="p" className="uppercase !font-normal">
+                1 / 2
+              </Text>
+            </div>
           </div>
         </div>
       </div>
+
       <Swiper
         spaceBetween={50}
         slidesPerView={2}
         onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
+        loop
         navigation
-        className="w-full  md:h-auto mx-auto max-w-[1390px] mt-[20px]"
+        className="w-full  md:h-auto mx-auto max-w-[1390px] px-2"
       >
         <SwiperSlide>
           <div className="h-[799px] w-full md:h-auto relative">
@@ -101,6 +115,7 @@ function SpaceSwiper() {
             </div>
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
           <div className="h-[799px] w-full md:h-auto relative">
             <video
@@ -163,6 +178,7 @@ function SpaceSwiper() {
             </div>
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
           <div className="h-[799px] w-full md:h-auto relative">
             <video

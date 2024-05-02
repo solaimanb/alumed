@@ -20,7 +20,7 @@ const Home = () => {
         />
       </Helmet>
 
-      <div className="w-full bg-gray-100 ">
+      <div className=" w-full bg-gray-100">
         <Navbar />
         <Hero />
         <Allspace />

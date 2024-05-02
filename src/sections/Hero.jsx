@@ -1,7 +1,20 @@
 import { Img, Text } from "components";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function Hero() {
+  const ref = useRef();
+  const isInView = useInView(ref, { once: true });
+
+  const slideControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      console.log("Allspace is in view");
+      slideControls.start("visible");
+    }
+  }, [isInView]);
+
   return (
     <div className="h-screen md:h-auto bg-blue_gray-900 bg-[url(/images/img_div_home_hero_810x1440.png)] bg-cover bg-no-repeat">
       <div className="h-screen md:h-auto bg-[url(/images/img_group_42.png)] bg-cover bg-no-repeat">
@@ -23,6 +36,7 @@ function Hero() {
                       ease: "easeInOut",
                     },
                   }}
+                  style={{ position: "relative" }}
                 >
                   <Text
                     size="7xl"
@@ -32,6 +46,26 @@ function Hero() {
                     The Passion
                   </Text>
                 </motion.div>
+                <motion.div
+                  variants={{
+                    hidden: { x: 10 },
+                    visible: {
+                      x: "100%",
+                      transition: { duration: 0.5, ease: "easeIn" },
+                    },
+                  }}
+                  initial="hidden"
+                  animate={slideControls}
+                  style={{
+                    position: "absolute",
+                    top: 4,
+                    bottom: 4,
+                    left: 0,
+                    right: 0,
+                    background: "white",
+                    zIndex: 20,
+                  }}
+                />
 
                 <motion.div
                   initial={{

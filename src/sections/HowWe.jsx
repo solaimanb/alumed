@@ -12,6 +12,7 @@ function HowWe() {
               How we work.
             </Text>
           </div>
+
           <div className="flex flex-col w-full pb-[38px] gap-[175px] md:gap-[131px] sm:gap-[87px] sm:pb-5">
             <div className="flex flex-col gap-[5px]">
               <div className="flex">
@@ -35,7 +36,7 @@ function HowWe() {
                 </Button>
               </div>
             </div>
-            <div className="flex md:flex-col self-start gap-2">
+            <div className="md:flex-col flex self-start gap-2">
               <div className="flex flex-col items-start">
                 <Text as="p" className="!text-[14px] font-bold">
                   Our strengths in real-estate give your ambitions space
@@ -71,7 +72,7 @@ function HowWe() {
                 loop
                 className="absolute w-full object-cover h-full z-[-1] "
               />
-              <div className="flex md:flex-col justify-between items-center gap-5 px-5 h-full py-5">
+              <div className="md:flex-col flex items-center justify-between h-full gap-5 px-5 py-5">
                 <Text
                   size="4xl"
                   as="p"
