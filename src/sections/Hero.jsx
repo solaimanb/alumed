@@ -18,7 +18,7 @@ function Hero() {
   return (
     <div className="h-screen md:h-auto bg-blue_gray-900 bg-[url(/images/img_div_home_hero_810x1440.png)] bg-cover bg-no-repeat">
       <div className="h-screen md:h-auto bg-[url(/images/img_group_42.png)] bg-cover bg-no-repeat">
-        <div className="h-screen w-full mx-auto md:pb-5 max-w-[1390px] sm:mt-auto flex flex-col justify-between px-2">
+        <div className="md:pb-5 sm:mt-auto container flex flex-col justify-between h-screen px-2">
           {/* ---------- Hero Top Section ---------- */}
           <div className="md:mt-auto lg:mt-0">
             <div className="md:justify-start relative flex justify-end mr-12">
@@ -46,6 +46,7 @@ function Hero() {
                     The Passion
                   </Text>
                 </motion.div>
+
                 <motion.div
                   variants={{
                     hidden: { x: 10 },

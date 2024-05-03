@@ -9,7 +9,7 @@ import { Img, Text } from "components";
 function SpaceSwiper() {
   return (
     <div className="mb-12">
-      <div className="w-full mx-auto px-2 max-w-[1390px] ">
+      <div className="container">
         <div className="flex items-center justify-between gap-4">
           <div className="sm:hidden w-1/4">
             <Text as="p" className="uppercase !font-normal text-base">
@@ -48,10 +48,10 @@ function SpaceSwiper() {
         onSlideChange={() => console.log("slide change")}
         loop
         navigation
-        className="w-full  md:h-auto mx-auto max-w-[1390px] px-2"
+        className="md:h-auto container"
       >
         <SwiperSlide>
-          <div className="h-[799px] w-full md:h-auto relative">
+          <div className="md:h-auto relative w-full h-full border border-black">
             <video
               src="/images/ymx1.mp4"
               autoPlay
@@ -67,8 +67,10 @@ function SpaceSwiper() {
                   alt="svg_one"
                   className="h-[12px] mt-[19px] mr-5 md:mr-0"
                 />
+
                 <div className="h-[200px] w-full left-0 bottom-0 right-0 top-0 m-auto bg-gray-100 absolute" />
               </div>
+
               <div className="flex sm:flex-col items-start mt-[-1px] relative">
                 <div className="sm:self-stretch p-[19px] bg-gray-100 flex-1">
                   <div className="flex flex-col items-start gap-[153px] md:gap-[114px] sm:gap-[76px]">

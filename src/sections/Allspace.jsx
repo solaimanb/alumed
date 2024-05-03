@@ -20,9 +20,9 @@ function Allspace() {
   return (
     <div
       ref={ref}
-      className="flex md:flex-col lg:flex-row justify-between mt-6 gap-5 mx-auto max-w-[1390px] px-2 w-full pb-20"
+      className="md:flex-col lg:flex-row gap-y-6 container flex justify-between py-10"
     >
-      <div className="md:w-full w-3/6">
+      <div className="md:w-full w-3/6 mb-10">
         <div className="flex w-full">
           <motion.div
             variants={{
@@ -44,7 +44,7 @@ function Allspace() {
 
       <div className="md:hidden lg:block w-1/6"></div>
 
-      <div className="md:w-full flex flex-col items-start w-2/6 gap-2">
+      <div className="md:w-full gap-y-6 flex flex-col items-start w-2/6">
         <div className="flex flex-col gap-[22px]">
           <div className="flex flex-col items-start">
             <motion.div
@@ -72,19 +72,7 @@ function Allspace() {
           </div>
         </div>
 
-        <div className="relative flex flex-col items-start self-stretch">
-          <span
-            style={{
-              clipPath: "polygon(51% 0,102% 50%,100% 50%,100% 0)",
-              width: "40px",
-              height: "40px",
-
-              transform: "translate(0%, 50%)",
-              border: "1px solid #1b2c50",
-              borderRadius: "100%",
-            }}
-            className="h-[42px] w-[42px] mr-[25px] md:mr-0 z-[1] hidden"
-          />
+        <div className="flex flex-col items-start self-stretch">
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -94,7 +82,7 @@ function Allspace() {
             animate={spaceControls}
             transition={{ duration: 0.5, delay: 0.25 }}
           >
-            <Button shape="square" className="relative font-medium uppercase">
+            <Button shape="square" className="font-medium uppercase">
               All Our Spaces
             </Button>
           </motion.div>

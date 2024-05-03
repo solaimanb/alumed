@@ -5,27 +5,24 @@ import { motion } from "framer-motion";
 function HowWe() {
   return (
     <div className="px-2 py-10 bg-gray-400">
-      <div className="max-w-[1390px] mx-auto">
-        <div className="md:flex-col gap-x-4 flex items-start justify-between w-full pb-10 mx-auto">
+      <div className="container mx-auto">
+        <div className="md:flex-col gap-x-4 flex items-start justify-between w-full pb-10 mx-auto space-y-6">
           <div className="flex w-full">
             <Text size="md" as="p" className=" font-bold">
               How we work.
             </Text>
           </div>
 
-          <div className="flex flex-col w-full space-y-4">
-            <div className="flex flex-col space-y-4">
+          <div className="space-y-28 flex flex-col w-full">
+            <div className="flex flex-col space-y-6">
               <div className="flex">
-                <Text size="3xl" as="p" className="">
-                  <>It&apos;s all built on our strengths</>
+                <Text size="4xl" as="p" className="font-bold">
+                  It&apos;s all built on our strengths
                 </Text>
               </div>
 
               <div className="">
-                <Button
-                  size="sm"
-                  className="relative text-sm font-bold uppercase"
-                >
+                <Button size="xs" className="text-sm font-semibold uppercase">
                   How We Work
                 </Button>
               </div>

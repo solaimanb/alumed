@@ -20,9 +20,9 @@ const clients = [
 
 function Review() {
   return (
-    <div className="w-full mx-auto max-w-[1390px] px-2 md:mt-20 mt-40">
+    <div className="w-full mx-auto container px-2 md:mt-20 mt-40">
       {/* Client Brands Image Map */}
-      <div className="md:grid-cols-2 sm:w-full w-[65%] grid grid-cols-4 gap-4 mx-auto">
+      <div className="md:grid-cols-2 sm:w-full md:w-[65%] w-[80%] grid grid-cols-4 gap-4 mx-auto">
         {clients.slice(0, -1).map((image, index) => (
           <div key={index} className="flex w-full p-10 bg-gray-200">
             <Img
@@ -48,12 +48,12 @@ function Review() {
       </div>
 
       {/* Review Slider */}
-      <div className=" sm:w-full w-[65%] mx-auto mt-10 space-y-4">
+      <div className=" sm:w-full md:w-[65%] w-[40%] mx-auto mt-10 space-y-4">
         <div>
           <Text
-            size="lg"
+            size=""
             as="p"
-            className="md:text-3xl xl:text-4xl text-5xl font-normal tracking-tighter text-center"
+            className="md:text-3xl text-4xl font-normal tracking-tighter text-center"
           >
             “Two of our major logistics centres are with Alumed. Undeniably,
             their human approach and desire to work together makes all the
