@@ -1,112 +1,89 @@
 import React from "react";
-import { Img, Text, Button, Input } from "components";
+import { Img, Text } from "components";
+
+// Client Brands:
+import Client1 from "/images/img_2dad569c_e390_4_83x166.png";
+import Client2 from "/images/img_beacbbd4_78b6_4_83x166.png";
+import Client3 from "/images/img_2c26bc69_6046_4_83x166.png";
+import Client4 from "/images/img_373f13b0_bc24_4_83x166.png";
+import Client5 from "/images/img_f7ebe438_1c42_4_83x166.png";
+import Client6 from "/images/img_75ebc6b7_c4b6_4_83x166.png";
+
+const clients = [
+  { src: Client1, alt: "airbus" },
+  { src: Client2, alt: "foliot_furniture" },
+  { src: Client3, alt: "syscomax" },
+  { src: Client4, alt: "drakkar" },
+  { src: Client5, alt: "xtreme" },
+  { src: Client6, alt: "nse" },
+];
 
 function Review() {
   return (
-    <div>
-      {" "}
-      <div className="flex flex-col pt-[25px] gap-[312px] px-[25px] md:gap-[234px] sm:gap-[156px] sm:pt-5 sm:px-5">
-        <div className="w-full mx-auto max-w-[1390px]">
-          <div className="flex flex-col pt-5 gap-5">
-            <div className="flex md:flex-col gap-5">
-              <div className="flex w-full px-14 py-[73px] md:p-5 bg-gray-200">
-                <Img
-                  src="images/img_2dad569c_e390_4_83x166.png"
-                  alt="2dad569ce390fou"
-                  className="w-[75%] object-cover"
-                />
-              </div>
-              <div className="flex w-full px-14 py-[73px] md:p-5 bg-gray-200">
-                <Img
-                  src="images/img_beacbbd4_78b6_4_83x166.png"
-                  alt="beacbbd478b6fou"
-                  className="w-[75%] object-cover"
-                />
-              </div>
-              <div className="flex w-full px-14 py-[73px] md:p-5 bg-gray-200">
-                <Img
-                  src="images/img_2c26bc69_6046_4_83x166.png"
-                  alt="2c26bc696046fou"
-                  className="w-[75%] object-cover"
-                />
-              </div>
-              <div className="flex w-full px-14 py-[73px] md:p-5 bg-gray-200">
-                <Img
-                  src="images/img_373f13b0_bc24_4_83x166.png"
-                  alt="373f13b0bc24fou"
-                  className="w-[75%] object-cover"
-                />
-              </div>
-            </div>
-            <div className="flex md:flex-col justify-between gap-5">
-              <div className="flex justify-center w-[24%] md:w-full px-14 py-[73px] md:p-5 bg-gray-200">
-                <Img
-                  src="images/img_f7ebe438_1c42_4_83x166.png"
-                  alt="f7ebe4381c42fou"
-                  className="w-[75%] object-cover"
-                />
-              </div>
-              <div className="flex justify-center w-[24%] md:w-full px-14 py-[73px] md:p-5 bg-gray-200">
-                <Img
-                  src="images/img_75ebc6b7_c4b6_4_83x166.png"
-                  alt="75ebc6b7c4b6fou"
-                  className="w-[75%] object-cover"
-                />
-              </div>
-            </div>
+    <div className="w-full mx-auto max-w-[1390px] px-2 md:mt-20 mt-40">
+      {/* Client Brands Image Map */}
+      <div className="md:grid-cols-2 sm:w-full w-[65%] grid grid-cols-4 gap-4 mx-auto">
+        {clients.slice(0, -1).map((image, index) => (
+          <div key={index} className="flex w-full p-10 bg-gray-200">
+            <Img
+              src={image.src}
+              alt={image?.alt}
+              className="object-cover w-[80%] mx-auto"
+            />
           </div>
-          <div className="mt-[-179px] pb-[352px] px-[352px] md:pb-5 md:px-5 relative">
-            <div className="mb-[124px]">
-              <div className="pb-5">
-                <div className="pb-[135px] md:pb-5">
-                  <div>
-                    <Text
-                      size="2xl"
-                      as="p"
-                      className="text-center !text-[41.38px] leading-[45px]"
-                    >
-                      <>
-                        “Two of our major logistics centres
-                        <br />
-                        are with Alumed. Undeniably, their
-                        <br />
-                        human approach and desire to
-                        <br />
-                        work together makes all the
-                        <br />
-                        difference for us.”
-                      </>
-                    </Text>
-                  </div>
-                </div>
-              </div>
-              <div className="flex sm:flex-col items-center pt-[21px] gap-[19px] sm:pt-5 border-blue_gray-900 border-t border-solid">
-                <div className="flex sm:self-stretch flex-1">
-                  <Text
-                    as="p"
-                    className="w-[80%] uppercase !font-normal leading-[13px]"
-                  >
-                    <>
-                      Benoit Hudon
-                      <br />
-                      President & CEO, DRAKKAR Aerospace & Ground Transportation
-                    </>
-                  </Text>
-                </div>
-                <div className="flex justify-between w-[15%] sm:w-full gap-5">
-                  <Img
-                    src="images/img_arrow_left_blue_gray_900.svg"
-                    alt="arrowleft_five"
-                    className="h-[60px] rotate-180"
-                  />
-                  <Img
-                    src="images/img_arrow_left_blue_gray_900.svg"
-                    alt="arrowleft_seven"
-                    className="h-[60px] mt-1"
-                  />
-                </div>
-              </div>
-            </div>
+        ))}
+
+        <div className="md:col-span-2 md:hidden grid" />
+        <div className="md:col-span-2 md:hidden grid" />
+
+        {clients.slice(-1).map((image, index) => (
+          <div key={index} className="flex w-full p-10 bg-gray-200">
+            <Img
+              src={image.src}
+              alt={image?.alt}
+              className="object-cover w-[80%] mx-auto"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Review Slider */}
+      <div className=" sm:w-full w-[65%] mx-auto mt-10 space-y-4">
+        <div>
+          <Text
+            size="lg"
+            as="p"
+            className="md:text-3xl xl:text-4xl text-5xl font-normal tracking-tighter text-center"
+          >
+            “Two of our major logistics centres are with Alumed. Undeniably,
+            their human approach and desire to work together makes all the
+            difference for us.”
+          </Text>
+        </div>
+
+        <div className="bg-blue_gray-900 w-full p-px divide-y" />
+
+        <div className="flex items-center">
+          <div className="w-2/3">
+            <Text as="p" className="w-[90%] uppercase !font-normal leading-3">
+              Benoit Hudon
+              <br />
+              President & CEO, DRAKKAR Aerospace & Ground Transportation
+            </Text>
+          </div>
+
+          <div className="flex justify-between w-1/3 gap-4">
+            <Img
+              src="images/img_arrow_left_blue_gray_900.svg"
+              alt="arrowleft_five"
+              className="h-[60px] rotate-180"
+            />
+
+            <Img
+              src="images/img_arrow_left_blue_gray_900.svg"
+              alt="arrowleft_seven"
+              className="h-[60px] mt-1"
+            />
           </div>
         </div>
       </div>
