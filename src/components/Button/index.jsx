@@ -10,7 +10,8 @@ const variants = {
     blue_gray_900: "bg-blue_gray-900",
   },
   outline: {
-    blue_gray_900: "border-blue_gray-900 border border-solid text-blue_gray-900",
+    blue_gray_900:
+      "border-blue_gray-900 border border-solid text-blue_gray-900",
   },
 };
 const sizes = {
@@ -31,7 +32,11 @@ const Button = ({
 }) => {
   return (
     <button
-      className={`${className} flex items-center justify-center text-center cursor-pointer ${(shape && shapes[shape]) || ""} ${(size && sizes[size]) || ""} ${(variant && variants[variant]?.[color]) || ""}`}
+      className={`${className} flex items-center justify-center text-center cursor-pointer ${
+        (shape && shapes[shape]) || ""
+      } ${(size && sizes[size]) || ""} ${
+        (variant && variants[variant]?.[color]) || ""
+      }`}
       {...restProps}
     >
       {!!leftIcon && leftIcon}

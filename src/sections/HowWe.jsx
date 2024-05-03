@@ -1,68 +1,56 @@
-import { Img, Text, Button, Input } from "components";
+import { Img, Text, Button } from "components";
 import React from "react";
 import { motion } from "framer-motion";
+
 function HowWe() {
   return (
-    <div>
-      {" "}
-      <div className="mt-[60px] p-[23px] sm:p-5 bg-gray-400">
-        <div className="flex md:flex-col justify-between items-center w-full gap-5 mx-auto max-w-[1390px]">
-          <div className="flex w-full pb-[469px] md:pb-5">
-            <Text size="md" as="p" className="!text-[18px] font-semibold ">
+    <div className="px-2 py-10 bg-gray-400">
+      <div className="max-w-[1390px] mx-auto">
+        <div className="md:flex-col gap-x-4 flex items-start justify-between w-full pb-10 mx-auto">
+          <div className="flex w-full">
+            <Text size="md" as="p" className=" font-bold">
               How we work.
             </Text>
           </div>
 
-          <div className="flex flex-col w-full pb-[38px] gap-[175px] md:gap-[131px] sm:gap-[87px] sm:pb-5">
-            <div className="flex flex-col gap-[5px]">
+          <div className="flex flex-col w-full space-y-4">
+            <div className="flex flex-col space-y-4">
               <div className="flex">
-                <Text size="3xl" as="p" className="w-[77%] leading-[68px]">
-                  <>
-                    It’s all built on our
-                    <br />
-                    strengths
-                  </>
+                <Text size="3xl" as="p" className="">
+                  <>It&apos;s all built on our strengths</>
                 </Text>
               </div>
-              <div className="flex flex-col items-end w-[30%] md:w-full">
-                <div className="flex flex-col items-end justify-center h-[42px] w-[32%] md:w-full md:h-auto mr-[25px] p-px md:mr-0 z-[1] bg-[url(/images/defaultNoData.png)] bg-cover bg-no-repeat">
-                  <div className="h-px w-[20px] mt-[19px] mb-5 bg-blue_gray-900" />
-                </div>
+
+              <div className="">
                 <Button
-                  shape="square"
-                  className="w-full mt-[-22px] uppercase relative "
+                  size="sm"
+                  className="relative text-sm font-bold uppercase"
                 >
                   How We Work
                 </Button>
               </div>
             </div>
-            <div className="md:flex-col flex self-start gap-2">
+
+            <div className="gap-x-4 flex pt-20">
               <div className="flex flex-col items-start">
                 <Text as="p" className="!text-[14px] font-bold">
-                  Our strengths in real-estate give your ambitions space
-                </Text>
-                <Text as="p" className="!text-[14px] font-bold">
-                  to grow. From planning and building to long-term
-                </Text>
-                <Text as="p" className="!text-[14px] font-bold">
-                  leases, we’re with you at every stage.
+                  Our strengths in real-estate give your ambitions space to
+                  grow. From planning and building to long-term leases,
+                  we&apos;re with you at every stage.
                 </Text>
               </div>
+
               <div className="flex flex-col items-start">
                 <Text as="p" className="!text-[14px] font-bold">
                   Discover our expertise in durable development, quality
-                </Text>
-                <Text as="p" className="!text-[14px] font-bold">
-                  construction, and building management of industrial
-                </Text>
-                <Text as="p" className="!text-[14px] font-bold">
-                  spaces.
+                  construction, and building management of industrial spaces.
                 </Text>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-full mb-[200px]  mx-auto  max-w-[1390px]">
+
+        <div className="flex flex-col w-full mb-[200px]  mx-auto">
           <div className="bg-blue_gray-800">
             <div className="self-start h-[760px] md:h-[400px] opacity-0.55 relative bg-cover bg-no-repeat">
               <video
@@ -72,7 +60,8 @@ function HowWe() {
                 loop
                 className="absolute w-full object-cover h-full z-[-1] "
               />
-              <div className="md:flex-col flex items-center justify-between h-full gap-5 px-5 py-5">
+
+              <div className="sm:hidden md:flex-col flex items-center justify-between h-full gap-4 px-2">
                 <Text
                   size="4xl"
                   as="p"
@@ -102,45 +91,22 @@ function HowWe() {
               </div>
             </div>
           </div>
-          <div className="h-[348px] relative sm:h-[80px] ">
-            <div className="flex flex-col items-start h-max left-[0.00px] bottom-0 top-0 my-auto sm:my-0  absolute">
-              <motion.div
-                initial={{ translateX: -900 }}
-                whileInView={{
-                  translateX: 0,
-                  transition: { duration: 0.3, delay: 0.2 },
-                }}
-              >
-                <Text
-                  size="10xl"
-                  as="p"
-                  className="uppercase text-[161.4px] sm:text-5xl"
-                >
-                  Innovation
-                </Text>
 
-                <Text
-                  size="9xl"
-                  as="p"
-                  className="mt-[-45px] sm:mt-[0px] uppercase text-[159.94px] sm:text-5xl relative"
-                >
-                  thrives
-                </Text>
-              </motion.div>
-            </div>
+          <div className=" flex flex-col items-start mt-4">
             <motion.div
-              initial={{ translateX: -900 }}
-              whileInView={{
-                translateX: 0,
-                transition: { duration: 0.3, delay: 0.2 },
-              }}
+              className="w-full"
+              // initial={{ translateX: -900 }}
+              // whileInView={{
+              //   translateX: 0,
+              //   transition: { duration: 0.3, delay: 0.2 },
+              // }}
             >
-              <Text
-                size="11xl"
-                as="p"
-                className="bottom-[0.00px]  right-[2.39px] m-auto uppercase text-[165.6px] sm:top-[48px]  absolute"
-              >
-                here
+              <Text size="9xl" as="p" className="uppercase">
+                <span className="inline-block">Innovation</span>
+                <div className="flex items-center justify-between w-full">
+                  <span className="flex-grow w-full">thrives</span>
+                  <span className="w-full ml-auto text-right">here</span>
+                </div>
               </Text>
             </motion.div>
           </div>
