@@ -1,34 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Img } from "./index";
-import { motion, useAnimation } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 
 function Navbar() {
+  const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+
+    if (latest > previous && latest > 100) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  });
 
   const controls = useAnimation();
 
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 5);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   useEffect(() => {
     if (isScrolled) {
-      controls.start({ height: 35 });
+      controls.start({ height: 25 });
     } else {
-      controls.start({ height: 85 });
+      controls.start({ height: 65 });
     }
   }, [isScrolled, controls]);
 
   return (
-    <div className="fixed w-full">
+    <motion.div
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: -100 },
+      }}
+      animate={isScrolled ? "hidden" : "visible"}
+      className="fixed z-50 w-full"
+    >
       <div className="container flex justify-between items-center py-2 z-[1]">
         <motion.img
           src="images/logo.png"
@@ -41,7 +52,7 @@ function Navbar() {
 
         <Img src="images/img_megaphone.svg" alt="megaphone_one" className="" />
       </div>
-    </div>
+    </motion.div>
   );
 }
 

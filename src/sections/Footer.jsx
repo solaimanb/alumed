@@ -1,12 +1,26 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Img, Text, Button, Input } from "components";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { motion, useInView, useScroll } from "framer-motion";
+import { motion, useAnimation, useInView, useScroll } from "framer-motion";
+
+const navLinks = [
+  { href: "https://edifis.ca/en/spaces/", text: "Our Spaces" },
+  { href: "https://edifis.ca/en/expertise/", text: "Our Expertise" },
+  { href: "https://edifis.ca/en/about-us/", text: "About Us" },
+  { href: "https://edifis.ca/en/contact/", text: "Contact Us" },
+];
 
 function Footer() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const { ref, inView } = useRef(null);
+  const controls = useAnimation();
+  const isInView = useInView({ ref, once: false });
   const { scrollYProgress: completionProgress } = useScroll();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   return (
     <div className="mt-40 space-y-40">
@@ -73,53 +87,43 @@ function Footer() {
           {/* Footer Navigation */}
           <div className="md:w-2/6 sm:w-full w-3/12">
             <div className="flex flex-col items-start w-full space-y-1">
-              <a
-                href="https://edifis.ca/en/spaces/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Text as="p" className=" !text-[14px] font-bold">
-                  Our Spaces
-                </Text>
-              </a>
+              {navLinks.map((link, index) => (
+                <div key={index} className="w-full">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={index !== 0 ? "mt-[-2px] relative" : ""}
+                  >
+                    <Text as="p" className="!text-[14px] font-bold">
+                      {link.text}
+                    </Text>
+                  </a>
 
-              <div className="self-stretch h-[1px] mb-1 mt-[3px] bg-blue_gray-900" />
-              <a
-                href="https://edifis.ca/en/expertise/"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-[-2px] relative"
-              >
-                <Text as="p" className=" !text-[14px] font-bold">
-                  Our Expertise
-                </Text>
-              </a>
+                  <div ref={ref} className="w-full">
+                    <motion.div
+                      initial={{
+                        opacity: 0,
+                        x: -10,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.5,
+                          ease: "easeInOut",
+                        },
+                      }}
+                      className="progress-bar self-stretch h-[1px] mb-1 mt-[3px] bg-blue_gray-900 w-full"
+                    />
 
-              <div className="self-stretch h-[1px] mb-1 mt-[3px] bg-blue_gray-900" />
-              <a
-                href="https://edifis.ca/en/about-us/"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-[-3px] relative"
-              >
-                <Text as="p" className="!text-[14px] font-bold">
-                  About Us
-                </Text>
-              </a>
-
-              <div className="self-stretch h-[1px] mb-1 mt-1 bg-blue_gray-900" />
-              <a
-                href="https://edifis.ca/en/contact/"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-[-3px] relative"
-              >
-                <Text as="p" className=" !text-[14px] font-bold">
-                  Contact Us
-                </Text>
-              </a>
-
-              <div className="self-stretch h-[1px]  mt-1 mb-[42px] bg-blue_gray-900" />
+                    <motion.div
+                      className="progress-bar"
+                      style={{ scaleX: 1 }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

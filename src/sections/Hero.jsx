@@ -2,6 +2,13 @@ import { Img, Text } from "components";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
+const navLinks = [
+  { href: "https://edifis.ca/en/spaces/", text: "Our Spaces" },
+  { href: "https://edifis.ca/en/expertise/", text: "Our Expertise" },
+  { href: "https://edifis.ca/en/about-us/", text: "About Us" },
+  { href: "https://edifis.ca/en/contact/", text: "Contact Us" },
+];
+
 function Hero() {
   const ref = useRef();
   const isInView = useInView(ref, { once: true });
@@ -18,79 +25,117 @@ function Hero() {
   return (
     <div className="h-screen md:h-auto bg-blue_gray-900 bg-[url(/images/img_div_home_hero_810x1440.png)] bg-cover bg-no-repeat">
       <div className="h-screen md:h-auto bg-[url(/images/img_group_42.png)] bg-cover bg-no-repeat">
-        <div className="md:pb-5 sm:mt-auto container flex flex-col justify-between h-screen px-2">
+        <div className="h-screen w-full mx-auto md:pb-5 max-w-[1390px] sm:mt-auto flex flex-col justify-between px-2">
           {/* ---------- Hero Top Section ---------- */}
           <div className="md:mt-auto lg:mt-0">
             <div className="md:justify-start relative flex justify-end mr-12">
               <div className="flex flex-col items-start">
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    x: -400,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    x: 0,
-                    transition: {
-                      duration: 0.7,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  style={{ position: "relative" }}
-                >
-                  <Text
-                    size="7xl"
-                    as="p"
-                    className="!text-white-A700 uppercase sm:text-5xl whitespace-nowrap  !font-medium"
+                <div className="relative">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      x: -400,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      transition: {
+                        duration: 0.7,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    style={{ position: "relative" }}
                   >
-                    The Passion
-                  </Text>
-                </motion.div>
+                    <Text
+                      size="7xl"
+                      as="p"
+                      className="!text-white-A700 uppercase sm:text-5xl whitespace-nowrap  !font-medium"
+                    >
+                      The Passion
+                    </Text>
+                  </motion.div>
 
-                <motion.div
-                  variants={{
-                    hidden: { x: 10 },
-                    visible: {
-                      x: "100%",
-                      transition: { duration: 0.5, ease: "easeIn" },
-                    },
-                  }}
-                  initial="hidden"
-                  animate={slideControls}
-                  style={{
-                    position: "absolute",
-                    top: 4,
-                    bottom: 4,
-                    left: 0,
-                    right: 0,
-                    background: "white",
-                    zIndex: 20,
-                  }}
-                />
+                  <motion.div
+                    variants={{
+                      initial: {
+                        opacity: 1,
+                      },
+                      animate: {
+                        opacity: 0,
+                      },
+                      hidden: { x: 10 },
+                      visible: {
+                        x: "100%",
+                        width: 0,
+                        transition: { duration: 0.7, ease: "easeIn" },
+                      },
+                    }}
+                    initial="hidden"
+                    animate={slideControls}
+                    style={{
+                      position: "absolute",
+                      top: 4,
+                      bottom: 4,
+                      left: 0,
+                      right: 0,
+                      background: "white",
+                      zIndex: 20,
+                    }}
+                  />
+                </div>
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    x: -400,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    x: 0,
-                    transition: {
-                      delay: 0.7,
-                      duration: 0.7,
-                      ease: "easeInOut",
-                    },
-                  }}
-                >
-                  <Text
-                    size="7xl"
-                    as="p"
-                    className="!font-medium !text-white-A700 uppercase sm:text-5xl relative whitespace-nowrap"
+                <div className="relative">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      x: -400,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      transition: {
+                        duration: 0.9,
+                        ease: "easeInOut",
+                      },
+                    }}
                   >
-                    is Built-in
-                  </Text>
-                </motion.div>
+                    <Text
+                      size="7xl"
+                      as="p"
+                      className="!font-medium !text-white-A700 uppercase sm:text-5xl relative whitespace-nowrap"
+                    >
+                      is Built-in
+                    </Text>
+                  </motion.div>
+
+                  <motion.div
+                    variants={{
+                      initial: {
+                        opacity: 1,
+                      },
+                      animate: {
+                        opacity: 0,
+                      },
+                      hidden: { x: 10 },
+                      visible: {
+                        x: "100%",
+                        width: 0,
+                        transition: { duration: 0.9, ease: "easeIn" },
+                      },
+                    }}
+                    initial="hidden"
+                    animate={slideControls}
+                    style={{
+                      position: "absolute",
+                      top: 4,
+                      bottom: 4,
+                      left: 0,
+                      right: 0,
+                      background: "white",
+                      zIndex: 20,
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -251,51 +296,44 @@ function Hero() {
                     </motion.div>
                   </div>
 
-                  <div className="md:hidden flex flex-col items-start w-full py-[5px]">
-                    <a
-                      href="https://edifis.ca/en/spaces/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Text as="p" className="!text-white-A700 !text-[13.83px]">
-                        Our Spaces
-                      </Text>
-                    </a>
+                  <div className="flex flex-col items-start w-full">
+                    <div className="flex flex-col items-start w-full space-y-2">
+                      {navLinks.map((link, index) => (
+                        <div key={index} className="w-full">
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={index !== 0 ? "relative" : ""}
+                          >
+                            <Text
+                              as="p"
+                              className=" !text-white-A700 font-bold"
+                            >
+                              {link.text}
+                            </Text>
+                          </a>
 
-                    <div className="self-stretch h-[1px] mb-1 mt-[3px] bg-white-A700" />
-                    <a
-                      href="https://edifis.ca/en/expertise/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-[-2px] relative"
-                    >
-                      <Text as="p" className="!text-white-A700 !text-[13.83px]">
-                        Our Expertise
-                      </Text>
-                    </a>
-                    <div className="self-stretch h-[1px] mb-1 mt-[3px] bg-white-A700" />
-                    <a
-                      href="https://edifis.ca/en/about-us/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-[-3px] relative"
-                    >
-                      <Text as="p" className="!text-white-A700 !text-[13.48px]">
-                        About Us
-                      </Text>
-                    </a>
-                    <div className="self-stretch h-[1px] mb-1 mt-1 bg-white-A700" />
-                    <a
-                      href="https://edifis.ca/en/contact/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-[-3px] relative"
-                    >
-                      <Text as="p" className="!text-white-A700 !text-[13.48px]">
-                        Contact Us
-                      </Text>
-                    </a>
-                    <div className="self-stretch h-[1px]  mt-1 mb-[42px] bg-white-A700" />
+                          <div ref={ref} className="w-full">
+                            <motion.div
+                              initial={{
+                                opacity: 0,
+                                x: -10,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                x: 0,
+                                transition: {
+                                  duration: 0.5,
+                                  ease: "easeInOut",
+                                },
+                              }}
+                              className="progress-bar self-stretch h-[1px] mb-1 mt-[3px] !bg-white-A700 w-full"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

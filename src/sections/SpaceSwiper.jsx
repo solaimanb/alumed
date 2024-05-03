@@ -48,10 +48,10 @@ function SpaceSwiper() {
         onSlideChange={() => console.log("slide change")}
         loop
         navigation
-        className="md:h-auto container"
+        className="container"
       >
-        <SwiperSlide>
-          <div className="md:h-auto relative w-full h-full border border-black">
+        <SwiperSlide className="h-full">
+          <div className="relative w-full h-full">
             <video
               src="/images/ymx1.mp4"
               autoPlay
@@ -60,7 +60,7 @@ function SpaceSwiper() {
               className="object-cover w-full h-full"
             />
 
-            <div className="flex flex-col w-[68%] bottom-[19.84px] left-[20.00px] m-auto absolute">
+            {/* <div className="flex flex-col w-[68%] bottom-[19.84px] left-[20.00px] m-auto absolute">
               <div className="h-[200px] w-[25%] md:h-auto z-[1] relative">
                 <Img
                   src="images/img_svg_blue_gray_900.svg"
@@ -114,7 +114,7 @@ function SpaceSwiper() {
                 </div>
                 <div className="h-[150px] w-[40px] ml-[-1px] sm:ml-0 relative bg-gray-100" />
               </div>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
 
@@ -127,7 +127,8 @@ function SpaceSwiper() {
               loop
               className="object-cover w-full h-full"
             />
-            <div className="flex flex-col items-end w-[94%] bottom-[19.84px] right-0 left-0 m-auto absolute">
+
+            {/* <div className="flex flex-col items-end w-[94%] bottom-[19.84px] right-0 left-0 m-auto absolute">
               <div className="h-[60px] w-[52%] md:h-auto z-[1] relative">
                 <Img
                   src="images/img_svg_blue_gray_900.svg"
@@ -177,7 +178,7 @@ function SpaceSwiper() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
 
@@ -191,7 +192,7 @@ function SpaceSwiper() {
               className="object-cover w-full h-full"
             />
 
-            <div className="flex flex-col w-[68%] bottom-[19.84px] left-[20.00px] m-auto absolute">
+            {/* <div className="flex flex-col w-[68%] bottom-[19.84px] left-[20.00px] m-auto absolute">
               <div className="h-[200px] w-[25%] md:h-auto z-[1] relative">
                 <Img
                   src="images/img_svg_blue_gray_900.svg"
@@ -243,7 +244,7 @@ function SpaceSwiper() {
                 </div>
                 <div className="h-[150px] w-[40px] ml-[-1px] sm:ml-0 relative bg-gray-100" />
               </div>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
       </Swiper>

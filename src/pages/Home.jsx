@@ -1,8 +1,7 @@
+import LoadingScreen from "components/Loading";
 import Navbar from "components/Navbar";
-import { useInView, useScroll } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
 import Allspace from "sections/Allspace";
 import Footer from "sections/Footer";
 import Hero from "sections/Hero";
@@ -11,12 +10,20 @@ import ParaSpace from "sections/ParaSpace";
 import Review from "sections/Review";
 import SpaceSwiper from "sections/SpaceSwiper";
 
-import { motion } from "framer-motion";
-
 const Home = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const { scrollYProgress: completionProgress } = useScroll();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <>
@@ -36,7 +43,6 @@ const Home = () => {
         <HowWe />
         <ParaSpace />
         <Review />
-
         <Footer />
       </div>
     </>
