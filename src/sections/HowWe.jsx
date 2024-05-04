@@ -1,36 +1,43 @@
 import { Img, Text, Button } from "components";
-import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function HowWe() {
-  const ref = useRef();
-  const isInView = useInView(ref, {
-    triggerOnce: true,
+  const { ref, inView } = useInView({
+    triggerOnce: false,
   });
 
-  const slideControls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      console.log("Element is in view");
-      slideControls.start("visible");
-    } else {
-      slideControls.start("hidden");
-    }
-  }, [isInView, slideControls]);
+  const variants = {
+    hidden: { opacity: 0, y: 40 },
+    show: (custom = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: custom, duration: 0.5 },
+    }),
+  };
 
   return (
-    <div className="py-10 bg-gray-400">
+    <motion.div ref={ref} className="py-10 bg-gray-400">
       <div className="container">
         <div className="md:flex-col gap-x-4 flex items-start justify-between w-full pb-10 mx-auto space-y-6">
-          <div className="flex w-full">
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            className="flex w-full"
+          >
             <Text size="md" as="p" className=" font-bold">
               How we work.
             </Text>
-          </div>
+          </motion.div>
 
-          <div className="space-y-28 flex flex-col w-full">
-            <div className="flex flex-col space-y-6">
+          <div className="space-y-28 flex flex-col w-full border">
+            <motion.div
+              variants={variants}
+              initial="hidden"
+              animate={inView ? "show" : "hidden"}
+              className="flex flex-col space-y-6"
+            >
               <div className="flex">
                 <Text size="4xl" as="p" className="font-bold">
                   It&apos;s all built on our strengths
@@ -42,28 +49,34 @@ function HowWe() {
                   How We Work
                 </Button>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="gap-x-4 flex pt-20">
-              <div className="flex flex-col items-start">
+            <motion.div
+              variants={variants}
+              initial="hidden"
+              custom={0.5}
+              animate={inView ? "show" : "hidden"}
+              className="gap-x-4 flex pt-20"
+            >
+              <motion.div custom={0.25} className="flex flex-col items-start">
                 <Text as="p" className="!text-[14px] font-bold">
                   Our strengths in real-estate give your ambitions space to
                   grow. From planning and building to long-term leases,
                   we&apos;re with you at every stage.
                 </Text>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col items-start">
+              <motion.div custom={0.5} className="flex flex-col items-start">
                 <Text as="p" className="!text-[14px] font-bold">
                   Discover our expertise in durable development, quality
                   construction, and building management of industrial spaces.
                 </Text>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
-        <div className="flex flex-col w-full mb-40">
+        <div className="mb-28 flex flex-col w-full">
           <div className="bg-blue_gray-800 mb-4">
             <div className="self-start h-[760px] md:h-[400px] opacity-0.55 relative bg-cover bg-no-repeat">
               <video
@@ -71,17 +84,14 @@ function HowWe() {
                 autoPlay
                 muted
                 loop
-                className="absolute w-full object-cover h-full z-[-1] "
+                className="absolute w-full object-cover h-full z-[-1]"
               />
 
-              <div className="sm:hidden md:flex-col flex items-center justify-between h-full gap-4 px-2">
-                <Text
-                  size="4xl"
-                  as="p"
-                  className="!text-white-A700 uppercase text-[72.03px]"
-                >
+              <div className="md:hidden flex flex-col items-center justify-between h-full gap-4 p-4">
+                <Text size="4xl" as="p" className="!text-white-A700 uppercase">
                   Push
                 </Text>
+
                 <Text
                   size="5xl"
                   as="p"
@@ -89,11 +99,13 @@ function HowWe() {
                 >
                   ideas
                 </Text>
+
                 <Img
                   src="images/img_arrow_right.svg"
                   alt="arrowright_one"
                   className="h-[44px] md:w-full"
                 />
+
                 <Text
                   size="6xl"
                   as="p"
@@ -105,7 +117,7 @@ function HowWe() {
             </div>
           </div>
 
-          <section ref={ref}>
+          <section ref={ref} className="space-y-2">
             <div className="flex gap-4">
               <div ref={ref} className="relative">
                 <motion.div
@@ -123,7 +135,11 @@ function HowWe() {
                   }}
                   style={{ position: "relative" }}
                 >
-                  <Text size="9xl" as="p" className="w-fit uppercase">
+                  <Text
+                    size="xl"
+                    as="p"
+                    className="w-fit md:text-lg !text-9xl font-medium uppercase"
+                  >
                     Innovation
                   </Text>
                 </motion.div>
@@ -144,7 +160,7 @@ function HowWe() {
                     },
                   }}
                   initial="hidden"
-                  animate={slideControls}
+                  // animate={slideControls}
                   style={{
                     position: "absolute",
                     top: 4,
@@ -177,7 +193,11 @@ function HowWe() {
                   }}
                   style={{ position: "relative" }}
                 >
-                  <Text size="9xl" as="p" className="w-fit uppercase">
+                  <Text
+                    size="xl"
+                    as="p"
+                    className="w-fit md:text-lg font-medium uppercase !text-9xl"
+                  >
                     thrives
                   </Text>
                 </motion.div>
@@ -198,7 +218,7 @@ function HowWe() {
                     },
                   }}
                   initial="hidden"
-                  animate={slideControls}
+                  // animate={slideControls}
                   style={{
                     position: "absolute",
                     top: 4,
@@ -227,7 +247,11 @@ function HowWe() {
                   }}
                   style={{ position: "relative" }}
                 >
-                  <Text size="9xl" as="p" className="w-fit uppercase">
+                  <Text
+                    size="xl"
+                    as="p"
+                    className="w-fit md:text-lg font-medium uppercase !text-9xl"
+                  >
                     here
                   </Text>
                 </motion.div>
@@ -248,7 +272,7 @@ function HowWe() {
                     },
                   }}
                   initial="hidden"
-                  animate={slideControls}
+                  // animate={slideControls}
                   style={{
                     position: "absolute",
                     top: 4,
@@ -264,7 +288,7 @@ function HowWe() {
           </section>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -40,7 +40,7 @@ function Navbar() {
       animate={isScrolled ? "hidden" : "visible"}
       className="fixed z-50 w-full"
     >
-      <div className="container flex justify-between items-center py-2 z-[1]">
+      <div className="container flex justify-between items-center py-2 z-[1] overflow-hidden">
         <motion.img
           src="images/logo.png"
           alt="alumed"

@@ -1,6 +1,7 @@
 import { Img, Text } from "components";
-import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 const navLinks = [
   { href: "https://edifis.ca/en/spaces/", text: "Our Spaces" },
@@ -22,10 +23,16 @@ function Hero() {
     }
   }, [isInView]);
 
+  const { scrollYProgress } = useScroll();
+  const width = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
+
   return (
-    <div className="h-screen md:h-auto bg-blue_gray-900 bg-[url(/images/img_div_home_hero_810x1440.png)] bg-cover bg-no-repeat">
+    <div
+      ref={ref}
+      className="h-screen md:h-auto bg-blue_gray-900 bg-[url(/images/img_div_home_hero_810x1440.png)] bg-cover bg-no-repeat"
+    >
       <div className="h-screen md:h-auto bg-[url(/images/img_group_42.png)] bg-cover bg-no-repeat">
-        <div className="h-screen w-full mx-auto md:pb-5 max-w-[1390px] sm:mt-auto flex flex-col justify-between px-2">
+        <div className="md:pb-5 sm:mt-auto container flex flex-col justify-between h-screen">
           {/* ---------- Hero Top Section ---------- */}
           <div className="md:mt-auto lg:mt-0">
             <div className="md:justify-start relative flex justify-end mr-12">
@@ -143,7 +150,7 @@ function Hero() {
           {/* ---------- Hero Bottom Section ---------- */}
           <div className="lg:mt-auto">
             <div className="md:hidden flex items-center justify-between gap-4 py-2">
-              <div className="flex items-center justify-between w-8/12 gap-4 py-2">
+              <div className="flex items-center justify-between w-1/2 gap-4 py-2">
                 <div className="flex items-start gap-12">
                   <div className="">
                     <Text
@@ -172,7 +179,9 @@ function Hero() {
                     </Text>
                   </div>
                 </div>
+              </div>
 
+              <div className="flex justify-between w-1/2">
                 <div className="flex flex-col items-start">
                   <Text as="p" className="!text-white-A700 !text-[13.48px]">
                     Real-estate development that&apos;s
@@ -181,11 +190,7 @@ function Hero() {
                     driven by purpose
                   </Text>
                 </div>
-              </div>
 
-              <div className="w-1/12"></div>
-
-              <div className="flex justify-end w-1/12">
                 <Img
                   src="images/img_svg.svg"
                   alt="svg_one"
@@ -194,11 +199,11 @@ function Hero() {
               </div>
             </div>
 
-            <div className="flex flex-col mt-auto pb-[38px] gap-5 sm:pb-5">
+            <div className="sm:pb-5 flex flex-col gap-5 pb-10 mt-auto">
               <div className="h-[2px] bg-white-A700" />
 
               <div className="lg:flex-col flex justify-between gap-5">
-                <div className="md:hidden flex flex-row justify-center w-full">
+                <div className="md:hidden flex flex-row justify-center w-1/2">
                   <Img
                     src="images/img_image_156x215.png"
                     alt="image_one"
@@ -280,13 +285,13 @@ function Hero() {
                   </div>
                 </div>
 
-                <div className="flex justify-between w-full gap-5">
-                  <div className="flex flex-col items-start">
+                <div className="md:w-full flex justify-between w-1/2 gap-2">
+                  <div className="md:w-full flex flex-col items-start w-1/2">
                     <motion.div>
                       <Text
                         size="md"
                         as="p"
-                        className="!text-white-A700 !text-[16.92px] font-bold"
+                        className="!text-white-A700 !text-base font-bold"
                       >
                         At ALUMED, we bring passion and purpose to everything we
                         build &ndash; from industrial spaces that make room for
@@ -296,7 +301,7 @@ function Hero() {
                     </motion.div>
                   </div>
 
-                  <div className="flex flex-col items-start w-full">
+                  <div className="md:hidden flex flex-col items-start w-1/2">
                     <div className="flex flex-col items-start w-full space-y-2">
                       {navLinks.map((link, index) => (
                         <div key={index} className="w-full">
@@ -307,26 +312,20 @@ function Hero() {
                             className={index !== 0 ? "relative" : ""}
                           >
                             <Text
+                              size="md"
                               as="p"
-                              className=" !text-white-A700 font-bold"
+                              className=" !text-white-A700 font-bold hover:pl-2 transition-all duration-400 !text-base"
                             >
                               {link.text}
                             </Text>
                           </a>
 
-                          <div ref={ref} className="w-full">
+                          <div className="w-full">
                             <motion.div
-                              initial={{
-                                opacity: 0,
-                                x: -10,
-                              }}
-                              animate={{
-                                opacity: 1,
-                                x: 0,
-                                transition: {
-                                  duration: 0.5,
-                                  ease: "easeInOut",
-                                },
+                              style={{ width }}
+                              transition={{
+                                duration: 0.1,
+                                ease: "easeInOut",
                               }}
                               className="progress-bar self-stretch h-[1px] mb-1 mt-[3px] !bg-white-A700 w-full"
                             />
