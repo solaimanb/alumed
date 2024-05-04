@@ -1,11 +1,27 @@
 import { Img, Text, Button } from "components";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 function HowWe() {
+  const ref = useRef();
+  const isInView = useInView(ref, {
+    triggerOnce: true,
+  });
+
+  const slideControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      console.log("Element is in view");
+      slideControls.start("visible");
+    } else {
+      slideControls.start("hidden");
+    }
+  }, [isInView, slideControls]);
+
   return (
-    <div className="px-2 py-10 bg-gray-400">
-      <div className="container mx-auto">
+    <div className="py-10 bg-gray-400">
+      <div className="container">
         <div className="md:flex-col gap-x-4 flex items-start justify-between w-full pb-10 mx-auto space-y-6">
           <div className="flex w-full">
             <Text size="md" as="p" className=" font-bold">
@@ -47,8 +63,8 @@ function HowWe() {
           </div>
         </div>
 
-        <div className="flex flex-col w-full mb-[200px]  mx-auto">
-          <div className="bg-blue_gray-800">
+        <div className="flex flex-col w-full mb-40">
+          <div className="bg-blue_gray-800 mb-4">
             <div className="self-start h-[760px] md:h-[400px] opacity-0.55 relative bg-cover bg-no-repeat">
               <video
                 src="/images/pif.mp4"
@@ -89,24 +105,163 @@ function HowWe() {
             </div>
           </div>
 
-          <div className=" flex flex-col items-start mt-4">
-            <motion.div
-              className="w-full"
-              // initial={{ translateX: -900 }}
-              // whileInView={{
-              //   translateX: 0,
-              //   transition: { duration: 0.3, delay: 0.2 },
-              // }}
-            >
-              <Text size="9xl" as="p" className="uppercase">
-                <span className="inline-block">Innovation</span>
-                <div className="flex items-center justify-between w-full">
-                  <span className="flex-grow w-full">thrives</span>
-                  <span className="w-full ml-auto text-right">here</span>
-                </div>
-              </Text>
-            </motion.div>
-          </div>
+          <section ref={ref}>
+            <div className="flex gap-4">
+              <div ref={ref} className="relative">
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    x: -400,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  style={{ position: "relative" }}
+                >
+                  <Text size="9xl" as="p" className="w-fit uppercase">
+                    Innovation
+                  </Text>
+                </motion.div>
+
+                <motion.div
+                  variants={{
+                    initial: {
+                      opacity: 1,
+                    },
+                    animate: {
+                      opacity: 0,
+                    },
+                    hidden: { x: 10 },
+                    visible: {
+                      x: "100%",
+                      width: 0,
+                      transition: { duration: 0.7, ease: "easeIn" },
+                    },
+                  }}
+                  initial="hidden"
+                  animate={slideControls}
+                  style={{
+                    position: "absolute",
+                    top: 4,
+                    bottom: 4,
+                    left: 0,
+                    right: 0,
+                    zIndex: 20,
+                  }}
+                  className="bg-blue_gray-900"
+                />
+              </div>
+
+              <div className="w-full"></div>
+            </div>
+
+            <div className="flex justify-between">
+              <div className="relative">
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    x: -400,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  style={{ position: "relative" }}
+                >
+                  <Text size="9xl" as="p" className="w-fit uppercase">
+                    thrives
+                  </Text>
+                </motion.div>
+
+                <motion.div
+                  variants={{
+                    initial: {
+                      opacity: 1,
+                    },
+                    animate: {
+                      opacity: 0,
+                    },
+                    hidden: { x: 10 },
+                    visible: {
+                      x: "100%",
+                      width: 0,
+                      transition: { duration: 0.7, ease: "easeIn" },
+                    },
+                  }}
+                  initial="hidden"
+                  animate={slideControls}
+                  style={{
+                    position: "absolute",
+                    top: 4,
+                    bottom: 4,
+                    left: 0,
+                    right: 0,
+                    zIndex: 20,
+                  }}
+                  className="bg-blue_gray-900"
+                />
+              </div>
+
+              <div className="relative">
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    x: -400,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  style={{ position: "relative" }}
+                >
+                  <Text size="9xl" as="p" className="w-fit uppercase">
+                    here
+                  </Text>
+                </motion.div>
+
+                <motion.div
+                  variants={{
+                    initial: {
+                      opacity: 1,
+                    },
+                    animate: {
+                      opacity: 0,
+                    },
+                    hidden: { x: 10 },
+                    visible: {
+                      x: "100%",
+                      width: 0,
+                      transition: { duration: 0.7, ease: "easeIn" },
+                    },
+                  }}
+                  initial="hidden"
+                  animate={slideControls}
+                  style={{
+                    position: "absolute",
+                    top: 4,
+                    bottom: 4,
+                    left: 0,
+                    right: 0,
+                    zIndex: 20,
+                  }}
+                  className="bg-blue_gray-900"
+                />
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

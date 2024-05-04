@@ -11,7 +11,7 @@ const navLinks = [
 
 function Hero() {
   const ref = useRef();
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: false });
 
   const slideControls = useAnimation();
 

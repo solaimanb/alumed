@@ -5,7 +5,7 @@ function ParaSpace() {
   return (
     <div className="space-y-6">
       <div className="px-2 py-10 bg-gray-400">
-        <div className="gap-y-2 flex flex-col w-full container mx-auto">
+        <div className="gap-y-2 container flex flex-col">
           <div className="bg-blue_gray-900 w-full p-px divide-y" />
 
           <div className="md:flex-col flex items-start justify-between gap-4">
@@ -90,7 +90,7 @@ function ParaSpace() {
         </div>
       </div>
 
-      <div className="flex justify-end w-full gap-4 mx-auto container px-2">
+      <div className="container flex justify-end w-full gap-4 px-2 mx-auto">
         <div className="md:hidden block w-1/2"></div>
 
         <div className="md:w-full flex w-1/2 gap-4">
