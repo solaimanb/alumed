@@ -31,7 +31,7 @@ function HowWe() {
             </Text>
           </motion.div>
 
-          <div className="space-y-28 flex flex-col w-full border">
+          <div className="space-y-28 flex flex-col w-full">
             <motion.div
               variants={variants}
               initial="hidden"

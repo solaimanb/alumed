@@ -20,7 +20,7 @@ const clients = [
 
 function Review() {
   return (
-    <div className="w-full mx-auto container px-2 md:mt-20 mt-40">
+    <div className="md:mt-20 container px-2 mt-40">
       {/* Client Brands Image Map */}
       <div className="md:grid-cols-2 sm:w-full md:w-[65%] w-[80%] grid grid-cols-4 gap-4 mx-auto">
         {clients.slice(0, -1).map((image, index) => (

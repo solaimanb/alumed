@@ -1,37 +1,47 @@
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Button, Text } from "components";
 import { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 function Allspace() {
-  const ref = useRef();
-  const isInView = useInView(ref, { triggerOnce: true });
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
 
-  const spaceControls = useAnimation();
-  const slideControls = useAnimation();
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: (custom = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: custom, duration: 0.5 },
+    }),
+  };
 
-  useEffect(() => {
-    if (isInView) {
-      console.log("Allspace is in view");
-      spaceControls.start("visible");
-      slideControls.start("visible");
-    }
-  }, [isInView]);
+  // const ref = useRef();
+  // const isInView = useInView(ref, { triggerOnce: true });
+
+  // const spaceControls = useAnimation();
+  // const slideControls = useAnimation();
+
+  // useEffect(() => {
+  //   if (isInView) {
+  //     console.log("Allspace is in view");
+  //     spaceControls.start("visible");
+  //     slideControls.start("visible");
+  //   }
+  // }, [isInView]);
 
   return (
-    <div
-      ref={ref}
-      className="md:flex-col lg:flex-row gap-y-4 container flex justify-between py-10"
-    >
+    <motion.div className="md:flex-col lg:flex-row gap-y-4 container flex justify-between py-10">
       <div className="md:w-full w-1/2 mb-10">
         <div className="flex w-full">
           <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
+            ref={ref}
+            variants={variants}
             initial="hidden"
-            animate={spaceControls}
-            transition={{ duration: 0.5, delay: 0.25 }}
+            animate={inView ? "show" : "hidden"}
+            className="gap-x-4 flex"
           >
             <Text size="4xl" as="p" className="text-2xl font-medium">
               If we make it, we
@@ -49,13 +59,12 @@ function Allspace() {
           <div className="flex flex-col">
             <div className="flex flex-col items-start">
               <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
+                ref={ref}
+                custom={0.2}
+                variants={variants}
                 initial="hidden"
-                animate={spaceControls}
-                transition={{ duration: 0.5, delay: 0.25 }}
+                animate={inView ? "show" : "hidden"}
+                className="gap-x-4 flex"
               >
                 <Text size="md" as="p" className="font-bold">
                   Whatever the project, we build it well, we build it to last,
@@ -75,13 +84,12 @@ function Allspace() {
 
           <div className="flex flex-col items-start self-stretch">
             <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
+              ref={ref}
+              custom={0.5}
+              variants={variants}
               initial="hidden"
-              animate={spaceControls}
-              transition={{ duration: 0.5, delay: 0.25 }}
+              animate={inView ? "show" : "hidden"}
+              className="gap-x-4 flex"
             >
               <Button shape="square" className="font-medium uppercase">
                 All Our Spaces
@@ -90,7 +98,7 @@ function Allspace() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
