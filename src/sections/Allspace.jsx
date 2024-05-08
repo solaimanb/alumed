@@ -18,20 +18,6 @@ function Allspace() {
     }),
   };
 
-  // const ref = useRef();
-  // const isInView = useInView(ref, { triggerOnce: true });
-
-  // const spaceControls = useAnimation();
-  // const slideControls = useAnimation();
-
-  // useEffect(() => {
-  //   if (isInView) {
-  //     console.log("Allspace is in view");
-  //     spaceControls.start("visible");
-  //     slideControls.start("visible");
-  //   }
-  // }, [isInView]);
-
   return (
     <motion.div className="md:flex-col lg:flex-row gap-y-4 container flex justify-between py-10">
       <div className="md:w-full w-1/2 mb-10">

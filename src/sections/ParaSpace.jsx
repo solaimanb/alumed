@@ -24,7 +24,7 @@ function ParaSpace() {
   }, [scaleProgress]);
 
   return (
-    <div className="space-y-6 border border-black">
+    <div className="space-y-6">
       <motion.div
         ref={sectionRef}
         className="sticky top-0 px-2 py-10 bg-gray-400"
