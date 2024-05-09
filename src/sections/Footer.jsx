@@ -250,7 +250,7 @@ function Footer() {
         </div>
       </div>
 
-      <motion.div className="relative flex flex-col justify-between">
+      <motion.div className="flex flex-col justify-between">
         <motion.div
           style={{ scaleY: completionProgress }}
           className="bg-blue_gray-900 absolute w-full h-full origin-bottom"
