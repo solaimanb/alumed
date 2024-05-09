@@ -23,7 +23,7 @@ function Footer() {
   }, [controls, inView]);
 
   return (
-    <div className="mt-40 space-y-40">
+    <div className="min-h-screen mt-40 space-y-40">
       <div className="container">
         <div className="bg-blue_gray-900 w-full p-px my-4 divide-y" />
 
@@ -250,7 +250,7 @@ function Footer() {
         </div>
       </div>
 
-      <motion.div className="flex flex-col justify-between min-h-screen">
+      <motion.div className="relative flex flex-col justify-between">
         <motion.div
           style={{ scaleY: completionProgress }}
           className="bg-blue_gray-900 absolute w-full h-full origin-bottom"

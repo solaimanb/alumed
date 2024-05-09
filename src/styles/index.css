@@ -1,13 +1,18 @@
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: Inter;
 }
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  line-height: normal;
   font-family: inherit;
-  margin: unset;
+  /* line-height: normal; */
 }
 a {
   display: block;
@@ -31,15 +36,13 @@ ul {
   align-items: center;
 }
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-  background: transparent;
+  display: none;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6b6b6b;
+  background: transparent;
   border-radius: 10px;
 }
 input {
