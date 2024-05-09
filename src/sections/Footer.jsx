@@ -299,7 +299,7 @@ function Footer() {
             ))}
           </div>
 
-          <footer className="container flex flex-col pb-10 mx-auto">
+          <footer className="container flex flex-col pb-4 mx-auto">
             <div className="bg-white-A700 w-full p-px my-4 divide-y" />
 
             <div className="flex items-center justify-between mt-auto">
