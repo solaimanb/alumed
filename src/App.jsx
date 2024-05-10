@@ -3,7 +3,7 @@ import Routes from "./Routes";
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
-  // Locomotive Smooth Scroll Trigger
+  // Smooth Scroll Trigger
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
