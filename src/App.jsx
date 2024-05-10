@@ -7,19 +7,13 @@ function App() {
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll({
-        el: document.querySelector("#myScrollContainer"),
-        smooth: true,
-        lerp: 0.01,
-      });
+      const locomotiveScroll = new LocomotiveScroll();
     })();
   }, []);
 
   return (
     <Router>
-      <div id="myScrollContainer">
-        <Routes />
-      </div>
+      <Routes />
     </Router>
   );
 }
