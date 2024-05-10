@@ -23,7 +23,7 @@ function Footer() {
   }, [controls, inView]);
 
   return (
-    <div className="min-h-screen mt-40 space-y-40">
+    <div className="min-h-scree mt-40 space-y-40 border">
       <div className="container">
         <div className="bg-blue_gray-900 w-full p-px my-4 divide-y" />
 
