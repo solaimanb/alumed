@@ -27,7 +27,7 @@ function Navbar() {
     if (isScrolled) {
       controls.start({ height: 25 });
     } else {
-      controls.start({ height: 65 });
+      controls.start({ height: 45 });
     }
   }, [isScrolled, controls]);
 
@@ -37,7 +37,6 @@ function Navbar() {
         visible: { y: 0 },
         hidden: { y: -100 },
       }}
-      animate={isScrolled ? "hidden" : "visible"}
       className="fixed z-50 w-full"
     >
       <div className="container flex justify-between items-center py-2 z-[1] overflow-hidden">

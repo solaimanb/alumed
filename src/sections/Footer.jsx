@@ -23,7 +23,7 @@ function Footer() {
   }, [controls, inView]);
 
   return (
-    <div className="min-h-scree mt-40 space-y-40 border">
+    <div className="min-h-screen mt-40 space-y-40">
       <div className="container">
         <div className="bg-blue_gray-900 w-full p-px my-4 divide-y" />
 
@@ -151,7 +151,7 @@ function Footer() {
                   Contact us about leasing an industrial property.
                 </Text>
 
-                <div className="sm:w-full border">
+                <div className="sm:w-full">
                   <Button
                     shape="square"
                     className="w-full mt-auto font-semibold uppercase"
@@ -219,7 +219,7 @@ function Footer() {
             </a>
           </div>
 
-          <div className="flex items-center gap-2 border">
+          <div className="flex items-center gap-2">
             <Button
               size="xs"
               variant="fill"
@@ -266,7 +266,7 @@ function Footer() {
               <Text
                 size="lg"
                 as="p"
-                className="!text-white-A700 !text-[18vw] mix-blend-exclusion font-bold"
+                className="!text-white-A700 !text-[22vw] mix-blend-exclusion font-bold"
               >
                 Alumed
               </Text>
