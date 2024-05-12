@@ -48,7 +48,6 @@ function Navbar() {
           animate={controls}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         />
-
         <Img src="images/img_megaphone.svg" alt="megaphone_one" className="" />
       </div>
     </motion.div>

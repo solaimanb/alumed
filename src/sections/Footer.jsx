@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { Img, Text, Button, Input } from "components";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { motion, useAnimation, useInView, useScroll } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useInView,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 const navLinks = [
   { href: "https://edifis.ca/en/spaces/", text: "Our Spaces" },
@@ -14,7 +20,7 @@ function Footer() {
   const { ref, inView } = useRef(null);
   const controls = useAnimation();
   const isInView = useInView({ ref, once: false });
-  const { scrollYProgress: completionProgress } = useScroll();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     if (isInView) {
@@ -252,9 +258,8 @@ function Footer() {
 
       <motion.div className="flex flex-col justify-between">
         <motion.div
-          style={{ scaleY: completionProgress }}
+          style={{ scaleY: scrollYProgress }}
           className="bg-blue_gray-900 absolute w-full h-full origin-bottom"
-          transition={{ duration: 0.1 }}
         />
 
         {/* Footer Bottom */}
@@ -266,12 +271,12 @@ function Footer() {
               <Text
                 size="lg"
                 as="p"
-                className="!text-white-A700 !text-[22vw] mix-blend-exclusion font-bold"
+                className="!text-white-A700 !text-[20vw] mix-blend-exclusion font-bold"
               >
                 Alumed
               </Text>
 
-              <sup className="!text-white-A700 text-[3vw] font-semibold mix-blend-exclusion md:mt-10 mt-20">
+              <sup className="!text-white-A700 text-[3vw] font-semibold mix-blend-exclusion md:mt-12 mt-20">
                 TM
               </sup>
             </div>
